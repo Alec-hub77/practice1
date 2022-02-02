@@ -9,10 +9,7 @@ export const Home: React.FC = () => {
   const { data, isLoading } = useGetProductsQuery(10);
   const [count, setCount] = useState(0)
 
-  const addHandler = () => {
-    setCount(count + 1)
-  }
-
+ 
   if (isLoading) {
     return (
       <div
@@ -53,7 +50,7 @@ export const Home: React.FC = () => {
       </div>
       <main className="flex flex-wrap justify-between">
         {data?.map((item) => (
-          <ProductItem key={item.id} product={item} addHandler={addHandler}/>
+          <ProductItem key={item.id} product={item} setCount={setCount} count={count}/>
         ))}
       </main>
     </div>
